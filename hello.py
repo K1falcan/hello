@@ -1,3 +1,4 @@
+pip install openpyxl
 print("Hello Koyo!")
 print("Hello Ryan!")
 def greet(name): print(f"Hello, {name}")
