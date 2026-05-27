@@ -13,7 +13,8 @@ def main():
     # Example: Create and save an Excel file
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-    sheet['A1'] = f"Hello, {name}!"
+    next_row = sheet.max_row + 1
+    sheet.cell(row=next_row, column=1).value = f"Hello, {name}!"
     workbook.save('greeting.xlsx')
     print(f"Greeting saved to greeting.xlsx")
 
