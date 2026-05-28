@@ -1,4 +1,7 @@
+from os import name
+
 import openpyxl
+from openpyxl import workbook
 
 print("Hello Koyo!")
 print("Hello Ryan!")
@@ -11,12 +14,13 @@ def main():
     greet(name)
     
     # Example: Create and save an Excel file
-    workbook = openpyxl.Workbook()
+    try:
+        workbook = openpyxl.load_workbook('greeting.xlsx')
+    except FileNotFoundError:
+        workbook = openpyxl.Workbook()
     sheet = workbook.active
-    next_row = sheet.max_row + 1
-    sheet.cell(row=next_row, column=1).value = f"Hello, {name}!"
+    sheet.append([f"Hello, {name}!"])
     workbook.save('greeting.xlsx')
     print(f"Greeting saved to greeting.xlsx")
-
 if __name__ == "__main__":
     main()
